@@ -6,7 +6,7 @@ export interface PushFunction {
 
 export function singlePage (
     cb:((href:string, opts)=>void),
-    opts:{ pushState:typeof history.pushState }
+    opts?:{ pushState:typeof history.pushState }
 ) {
     const page = new Page(cb, opts)
     window.addEventListener('popstate', onpopstate)
