@@ -32,7 +32,7 @@ export function singlePage (
 class Page {
     current:string|null = null;
     hasPushState:boolean|typeof window.history.pushState = false;
-    scroll;
+    scroll = {};
     cb:((href:string, data:RouteEventData)=>void)|null = null;
 
     constructor (
