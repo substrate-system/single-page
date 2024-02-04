@@ -4,8 +4,14 @@ export interface PushFunction {
     show:(href:string) => void;
 }
 
+export interface RouteEventData {
+    scrollX:number;
+    scrollY:number;
+    popstate:boolean;
+}
+
 export function singlePage (
-    cb:((href:string, opts)=>void),
+    cb:((href:string, data:RouteEventData)=>void),
     opts?:{ pushState:typeof history.pushState }
 ) {
     const page = new Page(cb, opts)
@@ -27,15 +33,12 @@ class Page {
     current:string|null = null;
     hasPushState:boolean|typeof window.history.pushState = false;
     scroll;
-    cb:((href:string, opts)=>void)|null = null;
+    cb:((href:string, data:RouteEventData)=>void)|null = null;
 
     constructor (
-        cb:(
-            href:string,
-            data:{ popstate:boolean, scrollX:number, scrollY:number }
-        ) => void,
+        cb:(href:string, data:RouteEventData) => void,
         opts:{
-            pushState: undefined|typeof history.pushState
+            pushState?: typeof history.pushState
         } = { pushState: undefined }
     ) {
         this.hasPushState = (opts.pushState !== undefined ?
