@@ -1,6 +1,5 @@
 {
   "name": "@nichoth/single-page",
-  "private": true,
   "type": "module",
   "version": "1.5.0",
   "main": "dist/index.js",
