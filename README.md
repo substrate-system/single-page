@@ -1,11 +1,12 @@
 # single page
 [![types](https://img.shields.io/npm/types/@nichoth/single-page?style=flat-square)](README.md)
 [![module](https://img.shields.io/badge/module-ESM%2FCJS-blue?style=flat-square)](README.md)
+[![dependencies](https://img.shields.io/badge/dependencies-zero-brightgreen.svg?style=flat-square)](package.json)
 [![license](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
 Write single-page apps with a single callback to handle pushState events
 
-Like the classic [@substack module](https://www.npmjs.com/package/single-page), but now with ESM + CJS versions.
+Like the classic [@substack module](https://www.npmjs.com/package/single-page), but now with ESM + CJS versions and types.
 
 # install
 ```
