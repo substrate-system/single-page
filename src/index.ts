@@ -1,4 +1,4 @@
-interface FN {
+export interface PushFunction {
     (href:string):void;
     push:(href:string) => void;
     show:(href:string) => void;
@@ -17,7 +17,7 @@ export function singlePage (
     }
     setTimeout(onpopstate, 0)
 
-    const fn:FN = function (href) { return page.show(href) }
+    const fn:PushFunction = function (href) { return page.show(href) }
     fn.push = function (href) { return page.push(href) }
     fn.show = function (href) { return page.show(href) }
     return fn
