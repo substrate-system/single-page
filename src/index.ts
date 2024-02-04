@@ -30,7 +30,10 @@ class Page {
     cb:((href:string, opts)=>void)|null = null;
 
     constructor (
-        cb,
+        cb:(
+            href:string,
+            data:{ popstate:boolean, scrollX:number, scrollY:number }
+        ) => void,
         opts:{
             pushState: undefined|typeof history.pushState
         } = { pushState: undefined }
@@ -39,6 +42,7 @@ class Page {
             opts.pushState :
             (window.history && window.history.pushState)
         )
+
         this.cb = cb
     }
 
