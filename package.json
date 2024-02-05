@@ -2,7 +2,7 @@
   "name": "@nichoth/single-page",
   "description": "Handle pushState events with a single callback.",
   "type": "module",
-  "version": "1.7.1",
+  "version": "1.7.2",
   "files": [
     "./dist/*"
   ],
