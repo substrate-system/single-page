@@ -1,5 +1,6 @@
 {
   "name": "@nichoth/single-page",
+  "description": "Handle pushState events with a single callback.",
   "type": "module",
   "version": "1.7.1",
   "files": [
@@ -46,6 +47,10 @@
         "./dist/*"
       ]
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nichoth/single-page.git"
   },
   "author": "nichoth <nichoth@gmail.com> (https://nichoth.com)",
   "license": "MIT"
