@@ -1,5 +1,5 @@
 # single page
-[![types](https://img.shields.io/npm/types/@nichoth/single-page?style=flat-square)](README.md)
+[![types](https://img.shields.io/npm/types/@bicycle-codes/single-page?style=flat-square)](README.md)
 [![module](https://img.shields.io/badge/module-ESM%2FCJS-blue?style=flat-square)](README.md)
 [![dependencies](https://img.shields.io/badge/dependencies-zero-brightgreen.svg?style=flat-square)](package.json)
 [![license](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
@@ -9,12 +9,12 @@ Write single-page apps with a single callback to handle pushState events
 Like the classic [@substack module](https://www.npmjs.com/package/single-page), but now with ESM + CJS versions and types.
 
 # install
-```
-npm i -S @nichoth/single-page
+```sh
+npm i -S @bicycle-codes/single-page
 ```
 
 ## test
-```
+```sh
 npm test
 ```
 
@@ -22,17 +22,17 @@ npm test
 
 ### ESM
 ```js
-import { singlePage } from '@nichoth/single-page'
+import { singlePage } from '@bicycle-codes/single-page'
 ```
 
 ### CJS
 ```js
-const singlePage = require('@nichoth/single-page').default
+const singlePage = require('@bicycle-codes/single-page').default
 ```
 
 Given some html with elements `#foo`, `#bar`, and `#baz`:
 
-``` html
+```html
 <html>
   <style>
   </style>
@@ -61,14 +61,14 @@ Now turn each of the divs into pages with their own routes.
 Note that this module doesn't update the link callbacks for you. You'll need to
 handle that for yourself.
 
-``` js
+```js
 var divs = {
     foo: document.querySelector('#foo'),
     bar: document.querySelector('#bar'),
     baz: document.querySelector('#baz')
 };
 
-const singlePage = require('@nichoth/single-page').default
+const singlePage = require('@bicycle-codes/single-page').default
 
 var showPage = singlePage(function (href) {
     Object.keys(divs).forEach(function (key) {
@@ -95,7 +95,7 @@ for (var i = 0; i < links.length; i++) {
 You'll need to have a server that will serve up the same static content for each
 of the pushState routes. Something like this will work:
 
-``` js
+```js
 var http = require('http');
 var ecstatic = require('ecstatic')(__dirname);
 
@@ -114,8 +114,8 @@ not reloading the page.
 
 ## methods
 
-``` js
-var singlePage = require('@nichoth/single-page').default
+```js
+var singlePage = require('@bicycle-codes/single-page').default
 ```
 
 ### var showPage = singlePage(cb, opts)
@@ -134,7 +134,3 @@ Navigate to `href`, firing the callback passed to singlePage.
 ### showPage.push(href)
 
 Update the location href in the address bar without firing any callbacks.
-
-## license
-
-MIT
