@@ -2,7 +2,7 @@
   "name": "@bicycle-codes/single-page",
   "description": "Handle pushState events with a single callback.",
   "type": "module",
-  "version": "1.7.3",
+  "version": "1.7.4",
   "files": [
     "./dist/*"
   ],
