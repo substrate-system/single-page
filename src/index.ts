@@ -13,7 +13,7 @@ export interface RouteEventData {
 export function singlePage (
     cb:((href:string, data:RouteEventData)=>void),
     opts?:{ pushState:typeof history.pushState }
-) {
+):PushFunction {
     const page = new Page(cb, opts)
     window.addEventListener('popstate', onpopstate)
 
