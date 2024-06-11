@@ -2,6 +2,7 @@ export interface PushFunction {
     (href:string):void;
     push:(href:string) => void;
     show:(href:string) => void;
+    page:InstanceType<typeof Page>;
 }
 
 export interface RouteEventData {
@@ -23,9 +24,15 @@ export function singlePage (
     }
     setTimeout(onpopstate, 0)
 
-    const setRoute:PushFunction = function (href) { return page.show(href) }
-    setRoute.push = function (href) { return page.push(href) }
+    const setRoute:PushFunction = function (href:string) {
+        return page.show(href)
+    }
+    setRoute.push = function (href:string, opts = { popstate: false }) {
+        return page.push(href, opts)
+    }
     setRoute.show = function (href) { return page.show(href) }
+    setRoute.page = page
+
     return setRoute
 }
 
@@ -78,7 +85,7 @@ class Page {
         if (mismatched) window.history.pushState(null, '', href)
     }
 
-    push (href:string) {
+    push (href:string, opts = { popstate: false }) {
         href = href.replace(/^\/+/, '/')
         this.saveScroll()
         this.pushHref(href)
