@@ -23,10 +23,10 @@ export function singlePage (
     }
     setTimeout(onpopstate, 0)
 
-    const fn:PushFunction = function (href) { return page.show(href) }
-    fn.push = function (href) { return page.push(href) }
-    fn.show = function (href) { return page.show(href) }
-    return fn
+    const setRoute:PushFunction = function (href) { return page.show(href) }
+    setRoute.push = function (href) { return page.push(href) }
+    setRoute.show = function (href) { return page.show(href) }
+    return setRoute
 }
 
 class Page {
