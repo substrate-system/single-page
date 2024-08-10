@@ -59,7 +59,6 @@ class Page {
     show (href, opts = { popstate: false }) {
         href = href.replace(/^\/+/, '/')
 
-        if (this.current === href) return
         this.saveScroll()
         this.current = href
 
