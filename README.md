@@ -1,21 +1,37 @@
 # single page
 [![types](https://img.shields.io/npm/types/@substrate-system/single-page?style=flat-square)](README.md)
 [![module](https://img.shields.io/badge/module-ESM%2FCJS-blue?style=flat-square)](README.md)
+[![semantic versioning](https://img.shields.io/badge/semver-2.0.0-blue?logo=semver&style=flat-square)](https://semver.org/)
+[![Common Changelog](https://nichoth.github.io/badge/common-changelog.svg)](./CHANGELOG.md)
+[![install size](https://flat.badgen.net/packagephobia/install/@bicycle-codes/keys?cache-control=no-cache)](https://packagephobia.com/result?p=@bicycle-codes/keys)
 [![dependencies](https://img.shields.io/badge/dependencies-zero-brightgreen.svg?style=flat-square)](package.json)
 [![license](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 
-Write single-page apps with a single callback to handle pushState events
+
+Write single-page apps with a single callback to handle pushState events. This is used as a part of [`route-event`](https://github.com/substrate-system/route-event).
 
 Like the classic [@substack module](https://www.npmjs.com/package/single-page), but now with ESM + CJS versions and types.
+
+<details><summary><h2>Contents</h2></summary>
+
+<!-- toc -->
+
+- [install](#install)
+  * [example](#example)
+    + [ESM](#esm)
+    + [CJS](#cjs)
+  * [methods](#methods)
+    + [var showPage = singlePage(cb, opts)](#var-showpage--singlepagecb-opts)
+    + [showPage(href)](#showpagehref)
+    + [showPage.push(href)](#showpagepushhref)
+
+<!-- tocstop -->
+
+</details>
 
 # install
 ```sh
 npm i -S @substrate-system/single-page
-```
-
-## test
-```sh
-npm test
 ```
 
 ## example
