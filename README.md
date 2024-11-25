@@ -1,5 +1,5 @@
 # single page
-[![types](https://img.shields.io/npm/types/@bicycle-codes/single-page?style=flat-square)](README.md)
+[![types](https://img.shields.io/npm/types/@substrate-system/single-page?style=flat-square)](README.md)
 [![module](https://img.shields.io/badge/module-ESM%2FCJS-blue?style=flat-square)](README.md)
 [![dependencies](https://img.shields.io/badge/dependencies-zero-brightgreen.svg?style=flat-square)](package.json)
 [![license](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
@@ -10,7 +10,7 @@ Like the classic [@substack module](https://www.npmjs.com/package/single-page), 
 
 # install
 ```sh
-npm i -S @bicycle-codes/single-page
+npm i -S @substrate-system/single-page
 ```
 
 ## test
@@ -22,12 +22,12 @@ npm test
 
 ### ESM
 ```js
-import { singlePage } from '@bicycle-codes/single-page'
+import { singlePage } from '@substrate-system/single-page'
 ```
 
 ### CJS
 ```js
-const singlePage = require('@bicycle-codes/single-page').default
+const singlePage = require('@substrate-system/single-page').default
 ```
 
 Given some html with elements `#foo`, `#bar`, and `#baz`:
@@ -68,7 +68,7 @@ var divs = {
     baz: document.querySelector('#baz')
 };
 
-const singlePage = require('@bicycle-codes/single-page').default
+const singlePage = require('@substrate-system/single-page').default
 
 var showPage = singlePage(function (href) {
     Object.keys(divs).forEach(function (key) {
@@ -115,7 +115,7 @@ not reloading the page.
 ## methods
 
 ```js
-var singlePage = require('@bicycle-codes/single-page').default
+var singlePage = require('@substrate-system/single-page').default
 ```
 
 ### var showPage = singlePage(cb, opts)
