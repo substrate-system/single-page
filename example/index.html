@@ -3,10 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
     <title>Example</title>
 </head>
 <body>
-    <div id="root"></div>
-    <script type="module" src="./index.tsx"></script>
+  <body>
+    <div id="foo">
+      foo foO fOo fOO Foo FoO FOo FOO
+      <div><a href="/bar">bar</a></div>
+    </div>
+    
+    <div id="bar">
+      bar baR bAr bAR Bar BaR BAr BAR
+      <div><a href="/baz">baz</a></div>
+    </div>
+    
+    <div id="baz">
+      baz baZ bAz bAZ Baz BaZ BAz BAZ
+      <div><a href="/foo">foo</a></div>
+    </div>
+
+    <div class="more">
+      <p>some more things</p>
+      <a href="abc">abc anchor link</a>
+    </div>
+
+    <div id="abc">aaa bbb ccc</div>
+    
+    <script type="module" src="index.ts"></script> 
   </body>
+</body>
 </html>

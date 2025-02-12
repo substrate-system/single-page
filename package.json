@@ -20,18 +20,15 @@
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "@bicycle-codes/tapzero": "^0.10.0",
-    "@preact/preset-vite": "^2.8.1",
+    "@substrate-system/tapzero": "^0.10.13",
     "@typescript-eslint/eslint-plugin": "^8.0.0",
     "@typescript-eslint/parser": "^8.0.0",
     "auto-changelog": "^2.4.0",
+    "esbuild": "^0.25.0",
     "eslint": "^8.57.0",
     "eslint-config-standard": "^17.1.0",
-    "esbuild": "^0.25.0",
     "markdown-toc": "^1.2.0",
     "postcss-nesting": "^13.0.0",
-    "preact": "^10.19.3",
-    "standardx": "^7.0.0",
     "tap-arc": "^1.2.2",
     "typescript": "^5.3.3",
     "vite": "^6.0.1"

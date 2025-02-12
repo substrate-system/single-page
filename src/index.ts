@@ -1,51 +1,21 @@
-export interface PushFunction {
-    (href:string):void;
-    push:(href:string) => void;
-    show:(href:string) => void;
-    page:InstanceType<typeof Page>;
-}
-
 export interface RouteEventData {
     scrollX:number;
     scrollY:number;
     popstate:boolean;
 }
 
-export function singlePage (
-    cb:((href:string, data:RouteEventData)=>void),
-    opts?:{ pushState:typeof history.pushState }
-):PushFunction {
-    const page = new Page(cb, opts)
-    window.addEventListener('popstate', onpopstate)
-
-    function onpopstate () {
-        const href = getPath()
-        page.show(href, { popstate: true })
-    }
-    setTimeout(onpopstate, 0)
-
-    const setRoute:PushFunction = function (href:string) {
-        return page.show(href)
-    }
-    setRoute.push = function (href:string, opts = { popstate: false }) {
-        return page.push(href, opts)
-    }
-    setRoute.show = function (href) { return page.show(href) }
-    setRoute.page = page
-
-    return setRoute
-}
-
 class Page {
-    current:string|null = null;
-    hasPushState:boolean|typeof window.history.pushState = false;
-    scroll = {};
-    cb:((href:string, data:RouteEventData)=>void)|null = null;
+    current:string|null = null
+    hasPushState:boolean|typeof window.history.pushState = false
+    scroll = {}
+    cb:((href:string, data:RouteEventData)=>void)|null = null
+    handleAnchor:boolean|((newPath:string)=>boolean) = true
 
     constructor (
         cb:(href:string, data:RouteEventData) => void,
         opts:{
             pushState?: typeof history.pushState
+            handleAnchor?:boolean|((newPath:string)=>boolean)
         } = { pushState: undefined }
     ) {
         this.hasPushState = (opts.pushState !== undefined ?
@@ -53,10 +23,14 @@ class Page {
             (window.history && window.history.pushState)
         )
 
+        if (typeof opts.handleAnchor === 'function') {
+            this.handleAnchor = opts.handleAnchor
+        }
+
         this.cb = cb
     }
 
-    show (href, opts = { popstate: false }) {
+    show (href:string, opts = { popstate: false }) {
         href = href.replace(/^\/+/, '/')
 
         this.saveScroll()
@@ -81,10 +55,20 @@ class Page {
     pushHref (href:string) {
         this.current = href
         const mismatched = getPath() !== href
-        if (mismatched) window.history.pushState(null, '', href)
+        let handleThis = true
+
+        if (href.includes('#')) {
+            handleThis = (typeof this.handleAnchor === 'function' ?
+                this.handleAnchor(href) :
+                this.handleAnchor)
+        }
+
+        if (mismatched && handleThis) {
+            window.history.pushState(null, '', href)
+        }
     }
 
-    push (href:string, opts = { popstate: false }) {
+    push (href:string) {
         href = href.replace(/^\/+/, '/')
         this.saveScroll()
         this.pushHref(href)
@@ -98,3 +82,38 @@ function getPath () {
 }
 
 export default singlePage
+
+export interface PushFunction {
+    (href:string):void;
+    push:(href:string) => void;
+    show:(href:string) => void;
+    page:InstanceType<typeof Page>;
+}
+
+export function singlePage (
+    cb:((href:string, data:RouteEventData)=>void),
+    opts?:{
+        pushState?:typeof history.pushState;
+        handleAnchor?:boolean|((newPath:string)=>boolean)
+    }
+):PushFunction {
+    const page = new Page(cb, opts)
+    window.addEventListener('popstate', onpopstate)
+
+    function onpopstate () {
+        const href = getPath()
+        page.show(href, { popstate: true })
+    }
+    setTimeout(onpopstate, 0)
+
+    const setRoute:PushFunction = function (href:string) {
+        return page.show(href)
+    }
+    setRoute.push = function (href:string) {
+        return page.push(href)
+    }
+    setRoute.show = function (href) { return page.show(href) }
+    setRoute.page = page
+
+    return setRoute
+}
