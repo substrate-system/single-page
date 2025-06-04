@@ -94,17 +94,23 @@ export function singlePage (
     cb:((href:string, data:RouteEventData)=>void),
     opts?:{
         pushState?:typeof history.pushState;
-        handleAnchor?:boolean|((newPath:string)=>boolean)
+        handleAnchor?:boolean|((newPath:string)=>boolean);
+        init?:boolean
     }
 ):PushFunction {
     const page = new Page(cb, opts)
     window.addEventListener('popstate', onpopstate)
 
+    const init = opts?.init === undefined ? true : opts.init
+
     function onpopstate () {
         const href = getPath()
         page.show(href, { popstate: true })
     }
-    setTimeout(onpopstate, 0)
+
+    if (init) {
+        setTimeout(onpopstate, 0)  // trigger an event right away, on page load
+    }
 
     const setRoute:PushFunction = function (href:string) {
         return page.show(href)
