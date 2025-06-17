@@ -95,7 +95,7 @@ export function singlePage (
     opts?:{
         pushState?:typeof history.pushState;
         handleAnchor?:boolean|((newPath:string)=>boolean);
-        init?:boolean
+        init?:boolean  // default true
     }
 ):PushFunction {
     const page = new Page(cb, opts)
